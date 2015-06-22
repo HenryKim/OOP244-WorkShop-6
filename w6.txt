@@ -1,0 +1,297 @@
+Script started on Sat 20 Jul 2013 12:08:21 AM EDT
+hkim142@matrix:~/oop244/w6> g++ Employee.cpp Employee.h w6.[Kx.cpp w6x.[K.h
+hkim142@matrix:~/oop244/w6> cat Emply[Koyee.cpp Employee.h
+#include <iostream>
+#include <iomanip>
+#include <cstring>
+#include "Employee.h"
+using namespace std;
+
+Employee::Employee(){
+	no=0;
+	name=NULL;
+	rate = MIN_Wage;
+}//Safe Empty State
+
+Employee::Employee(int n, const char* nm){
+	Employee temp(n, nm, MIN_Wage);
+	*this= temp;
+
+}
+
+Employee::Employee(int n, const char* nm, double r){
+	if (n > 0 && nm[0] != '\0' && r >= MIN_Wage) {
+		name = new char [strlen(nm) +1 ]; // dynamic memory allocation
+		no = n ;
+		strcpy (name,nm); 
+		rate= r ;
+	}
+	else{
+		Employee empty;
+		*this = empty;
+	}
+}
+
+Employee::Employee(const Employee& a){
+	name = NULL;
+	*this = a;
+}//copy constructor;
+
+Employee& Employee::operator = (const Employee& a){
+		if (a.no > 0 && a.name[0] != '\0' && a.rate >= MIN_Wage){
+				delete [] name;
+				no = a.no;
+				name = new char [strlen(a.name) +1];
+				strcpy(name,a.name);
+				rate=a.rate;
+				}
+		return *this;
+}//copy constructor operator =;
+
+bool operator>(const Employee& a, const Employee& b) {
+	Employee x = a, y = b;
+	if(strcmp(x.name,y.name)>0){//is after compare if value of a > b than return true;
+		return true;
+	}
+	return false;
+}//comparing
+	istream& operator>>(istream& is, Employee& employee){
+		employee.read(is);
+	return is;  
+}
+
+void Employee :: read(istream& red){
+		name = new char [1000];
+		int flag =1;
+		cout<<"ID :";
+		red >> no;
+		do{
+		cout<<"Rate :";
+		red>>rate;
+		if(rate >MIN_Wage){
+			flag--;
+		}
+		else{
+			cout<<"your rate is lower than minimum wage please enter again"<<endl;
+		}
+		}while(flag =1);
+		cout<<"Name: ";
+		red.ignore(2000,'\n');
+		red.getline(name,40);
+}
+
+ostream& operator<<(ostream& os, const Employee& employee){
+	employee.display(os);
+	return os;
+}//out put;
+
+void Employee::display(ostream& os) const{
+	if (no > 0 && name[0] != '\0' && rate >= MIN_Wage) {
+		os <<no<<"    "<<rate<<"  "<<name<<endl;
+	}
+	else{
+			os << "no data available" << endl;
+
+		}
+}
+Employee::~Employee(){
+	if(name != NULL){
+		delete [] name;
+	}
+}#include <iostream>
+#define MAX_NAME 40
+#define MIN_Wage 10.25
+using namespace std;
+class Employee{
+	int no;
+	char *name;
+	double rate;
+public:
+	Employee ();
+	Employee(int n, const char *nm);
+	Employee(int n, const char* nm, double r);
+	Employee(const Employee& a);
+	Employee& operator = (const Employee&);
+	friend bool operator>(const Employee& a, const Employee& b);
+	friend istream& operator>>(istream& is, Employee& employee);
+	friend ostream& operator<<(ostream& os, const Employee& employee);
+	void read(istream&is);
+	void display(ostream&os) const;
+	~Employee();
+};
+	hkim142@matrix:~/oop244/w6> a.out
+Staff List Processor
+====================
+ID :999999
+Rate :10.50
+Rate :0
+your rate is lower than minimum wage please enter again
+Rate :0
+your rate is lower than minimum wage please enter again
+Rate :0^H^H^H       ^H^H    ^H1^H^H       12.22
+Rate :12.22
+Rate :15.55
+Rate :c^H^H     ^C
+hkim142@matrix:~/oop244/w6> ^C
+hkim142@matrix:~/oop244/w6> ^C
+hkim142@matrix:~/oop244/w6> cleat
+If 'cleat' is not a typo you can use command-not-found to lookup the package that contains it, like this:
+    cnf cleat
+hkim142@matrix:~/oop244/w6> clrea[K[K[Kear
+[H[Jhkim142@matrix:~/oop244/w6> script w6.txy[Kt
+Script started, file is w6.txt
+1hkim142@matrix:~/oop244/w6> 111[K[K[Kexitscript w6x.cppcd oop244/w6[Kexit[Kg++ Employee.cpp Employee.h w6x.cpp w6x.h
+hkim142@matrix:~/oop244/w6> g++ Employee.cpp Employee.h w6x.cpp w6x.h[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cexit[Kscript w6x.cppcd oop244/w6[Kexit[Kg++ Employee.cpp Employee.h w6x.cpp w6x.h[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccat Employee.cpp Employee.h[Kexit[Kcat Employee.cpp Employee.h
+#include <iostream>
+#include <iomanip>
+#include <cstring>
+#include "Employee.h"
+using namespace std;
+
+Employee::Employee(){
+	no=0;
+	name=NULL;
+	rate = MIN_Wage;
+}//Safe Empty State
+
+Employee::Employee(int n, const char* nm){
+	Employee temp(n, nm, MIN_Wage);
+	*this= temp;
+
+}
+
+Employee::Employee(int n, const char* nm, double r){
+	if (n > 0 && nm[0] != '\0' && r >= MIN_Wage) {
+		name = new char [strlen(nm) +1 ]; // dynamic memory allocation
+		no = n ;
+		strcpy (name,nm); 
+		rate= r ;
+	}
+	else{
+		Employee empty;
+		*this = empty;
+	}
+}
+
+Employee::Employee(const Employee& a){
+	name = NULL;
+	*this = a;
+}//copy constructor;
+
+Employee& Employee::operator = (const Employee& a){
+		if (a.no > 0 && a.name[0] != '\0' && a.rate >= MIN_Wage){
+				delete [] name;
+				no = a.no;
+				name = new char [strlen(a.name) +1];
+				strcpy(name,a.name);
+				rate=a.rate;
+				}
+		return *this;
+}//copy constructor operator =;
+
+bool operator>(const Employee& a, const Employee& b) {
+	Employee x = a, y = b;
+	if(strcmp(x.name,y.name)>0){//is after compare if value of a > b than return true;
+		return true;
+	}
+	return false;
+}//comparing
+	istream& operator>>(istream& is, Employee& employee){
+		employee.read(is);
+	return is;  
+}
+
+void Employee :: read(istream& red){
+		name = new char [1000];
+		int flag =1;
+		cout<<"ID :";
+		red >> no;
+		do{
+		cout<<"Rate :";
+		red>>rate;
+		if(rate >=MIN_Wage){
+			flag--;
+		}
+		else{
+			cout<<"your rate is lower than minimum wage please enter again"<<endl;
+		}
+		}while(flag == 1);
+		cout<<"Name: ";
+		red.ignore(2000,'\n');
+		red.getline(name,40);
+}
+
+ostream& operator<<(ostream& os, const Employee& employee){
+	employee.display(os);
+	return os;
+}//out put;
+
+void Employee::display(ostream& os) const{
+	if (no > 0 && name[0] != '\0' && rate >= MIN_Wage) {
+		os <<no<<"    "<<rate<<"  "<<name<<endl;
+	}
+	else{
+			os << "no data available" << endl;
+
+		}
+}
+Employee::~Employee(){
+	if(name != NULL){
+		delete [] name;
+	}
+}#include <iostream>
+#define MAX_NAME 40
+#define MIN_Wage 10.25
+using namespace std;
+class Employee{
+	int no;
+	char *name;
+	double rate;
+public:
+	Employee ();
+	Employee(int n, const char *nm);
+	Employee(int n, const char* nm, double r);
+	Employee(const Employee& a);
+	Employee& operator = (const Employee&);
+	friend bool operator>(const Employee& a, const Employee& b);
+	friend istream& operator>>(istream& is, Employee& employee);
+	friend ostream& operator<<(ostream& os, const Employee& employee);
+	void read(istream&is);
+	void display(ostream&os) const;
+	~Employee();
+};
+	hkim142@matrix:~/oop244/w6> a.out
+Staff List Processor
+====================
+ID :Zorro,        999999
+Rate :10.50
+Name: Zorro, Frank
+ Do you wish to continue (y or n) ? y
+ID :888888
+Rate :100
+Name: Black, Barbara
+ Do you wish to continue (y or n) ? y
+ID :777777
+Rate :1
+your rate is lower than minimum wage please enter again
+Rate :12
+Name: n
+ Do you wish to continue (y or n) ? n
+
+           Staff List
+
+Number    Rate  Name
+------------------------------------
+888888    100  Black, Barbara
+
+999999    10.5  Zorro, Frank
+
+777777    12  n
+
+hkim142@matrix:~/oop244/w6> exit
+exit
+Script done, file is w6.txt
+hkim142@matrix:~/oop244/w6> eixt[K[K[Kxit
+exit
+
+Script done on Sat 20 Jul 2013 12:12:18 AM EDT
